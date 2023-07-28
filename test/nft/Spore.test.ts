@@ -41,7 +41,7 @@ describe('Spore', function () {
 
     // Create cluster cell, collect inputs and pay fee
     let { txSkeleton } = await createSpore({
-      sporeData: {
+      data: {
         contentType: 'image/jpeg',
         content: content.arrayBuffer,
       },
@@ -56,7 +56,7 @@ describe('Spore', function () {
       txSkeleton,
       config,
       rpc,
-      send: true,
+      send: false,
     });
   });
 
@@ -66,13 +66,13 @@ describe('Spore', function () {
     const { CHARLIE, ALICE } = TESTNET_ACCOUNTS;
 
     const outPoint: OutPoint = {
-      txHash: '0x9b805023fb444bf23536f363e73515a2356e07e2c546bbc14dfd12c11d340e16',
+      txHash: '0x3f94102dc70ce9fedb04776ed2013221b1dd477931b79297f7eb4c4094b4f7c8',
       index: '0x0',
     };
 
     // Create cluster cell, collect inputs and pay fee
     let { txSkeleton } = await transferSpore({
-      sporeOutPoint: outPoint,
+      outPoint: outPoint,
       fromInfos: [CHARLIE.address],
       toLock: ALICE.lock,
       config,
@@ -94,13 +94,13 @@ describe('Spore', function () {
     const { CHARLIE, ALICE } = TESTNET_ACCOUNTS;
 
     const outPoint: OutPoint = {
-      txHash: '0xbaa1e780fb66bf2bd13c60821e846ca7e5a0058ab6b67b21d9516bcb88c88bbb',
+      txHash: '0x28aa8dc723be732b85851c1b0dbf56e6e2c51b9f221abd86ecca4c0579e69388',
       index: '0x0',
     };
 
     // Create cluster cell, collect inputs and pay fee
     let { txSkeleton } = await destroySpore({
-      sporeOutPoint: outPoint,
+      outPoint: outPoint,
       fromInfos: [ALICE.address],
       config,
     });
